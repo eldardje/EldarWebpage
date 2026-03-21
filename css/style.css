@@ -168,6 +168,41 @@ nav.scrolled { border-bottom-color: var(--border); }
 }
 .sep { margin: 0 0.6rem; opacity: 0.4; }
 
+.hero-icon-row {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.48rem 0.78rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: 0.78rem;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s, background 0.2s;
+}
+
+.icon-link svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.icon-link:hover {
+  color: var(--ink);
+  border-color: var(--border-hover);
+  background: var(--bg-3);
+  transform: translateY(-1px);
+}
+
 .hero-scroll {
   position: absolute; bottom: 3rem; right: 2.5rem;
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
@@ -193,6 +228,75 @@ nav.scrolled { border-bottom-color: var(--border); }
 }
 .bull { opacity: 0.3; }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ── PROFILE SECTION ── */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.profile-image-wrap {
+  position: sticky;
+  top: 7.25rem;
+}
+
+.profile-image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+}
+
+.profile-image-note {
+  margin-top: 0.65rem;
+  display: block;
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-content p {
+  color: var(--ink-2);
+  font-size: 0.96rem;
+  line-height: 1.75;
+}
+
+.profile-points {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+}
+
+.profile-point {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  border-radius: 8px;
+  padding: 0.8rem 0.9rem;
+  color: var(--ink-2);
+  font-size: 0.85rem;
+}
+
+.profile-point svg {
+  width: 15px;
+  height: 15px;
+  margin-top: 0.18rem;
+  fill: var(--accent-blue);
+  flex-shrink: 0;
+}
 
 /* ── SNAPSHOT CARDS ── */
 .snap-grid {
@@ -340,7 +444,18 @@ nav.scrolled { border-bottom-color: var(--border); }
 
 .proj-highlights { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
 .highlight { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--ink-2); }
-.highlight-icon { font-size: 0.9rem; margin-top: 1px; }
+.highlight-icon {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--accent-blue);
+  flex-shrink: 0;
+}
+.highlight-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
 .proj-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
 /* ── STACK PAGE ── */
@@ -387,6 +502,16 @@ nav.scrolled { border-bottom-color: var(--border); }
   .hero-scroll { display: none; }
 
   .snap-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .profile-image-wrap {
+    position: static;
+    max-width: 340px;
+  }
 
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
