@@ -11,5 +11,5 @@ This is a personal website project where I showcase my work, projects, and infor
 Clone the repository and open the project to get started:
 
 ```bash
-git clone https://github.com/eldardje/personalwebsite.git
+git clone https://github.com/eldardje/EldarWebpage.git
 ```
