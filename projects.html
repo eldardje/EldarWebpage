@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Eldar Djedovic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">ED<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="experience.html" class="nav-link">Experience</a></li>
+      <li><a href="projects.html" class="nav-link active">Projects</a></li>
+      <li><a href="stack.html" class="nav-link">Stack</a></li>
+    </ul>
+    <a href="mailto:djedoviceldar1@gmail.com" class="nav-cta">Get in touch</a>
+    <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html" class="mob-link">Home</a></li>
+      <li><a href="about.html" class="mob-link">About</a></li>
+      <li><a href="experience.html" class="mob-link">Experience</a></li>
+      <li><a href="projects.html" class="mob-link">Projects</a></li>
+      <li><a href="stack.html" class="mob-link">Stack</a></li>
+      <li><a href="mailto:djedoviceldar1@gmail.com" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <section class="page-hero section">
+    <div class="container">
+      <span class="section-tag reveal">Work</span>
+      <h1 class="page-title reveal">Selected<br/><span class="italic">Projects</span></h1>
+    </div>
+  </section>
+
+  <section class="projects-section section">
+    <div class="container">
+
+      <div class="proj-card reveal">
+        <div class="proj-card-header">
+          <div>
+            <span class="proj-num">01</span>
+            <h2 class="proj-title">Colorado STEM Ecosystem</h2>
+            <p class="proj-type">Full-Stack Web Application · Project Lead</p>
+          </div>
+          <a href="https://github.com/eldardje" target="_blank" class="proj-link">View on GitHub ↗</a>
+        </div>
+        <p class="proj-description">
+          A community platform for Colorado's STEM network, built to connect individuals, organizations, 
+          and institutions. Led the project as Project Manager and Lead Developer — writing user stories, 
+          coordinating sprints, and delivering the product to MVP.
+        </p>
+        <div class="proj-highlights">
+          <div class="highlight">
+            <span class="highlight-icon">🔐</span>
+            <span>User &amp; org authentication via Firebase Auth</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-icon">🕸️</span>
+            <span>Collaboration network graphs powered by Cytoscape.js</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-icon">📅</span>
+            <span>Event &amp; post management with audience targeting</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-icon">🐳</span>
+            <span>Fully containerized with Docker, hosted on Google Cloud Storage</span>
+          </div>
+        </div>
+        <div class="proj-stack">
+          <span class="tag">Next.js</span>
+          <span class="tag">React.js</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Neo4j</span>
+          <span class="tag">Firebase Auth</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">Google Cloud</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-card-header">
+          <div>
+            <span class="proj-num">02</span>
+            <h2 class="proj-title">Reel View</h2>
+            <p class="proj-type">Full-Stack Web Application</p>
+          </div>
+          <a href="https://github.com/eldardje" target="_blank" class="proj-link">View on GitHub ↗</a>
+        </div>
+        <p class="proj-description">
+          A movie discovery platform integrating the IMDb dataset with a content-based recommendation 
+          engine. Built with a focus on optimized database queries and a clean, intuitive user experience.
+        </p>
+        <div class="proj-highlights">
+          <div class="highlight">
+            <span class="highlight-icon">🎥</span>
+            <span>IMDb top 1,000 titles with optimized PostgreSQL queries</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-icon">🤖</span>
+            <span>Content-based recommendation engine</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-icon">🛡️</span>
+            <span>User authentication &amp; admin dashboard</span>
+          </div>
+        </div>
+        <div class="proj-stack">
+          <span class="tag">Flask</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">ED<span class="dot">.</span></span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/eldar-djedovic" target="_blank">LinkedIn</a>
+        <a href="https://github.com/eldardje" target="_blank">GitHub</a>
+        <a href="mailto:djedoviceldar1@gmail.com">Email</a>
+      </div>
+      <span class="footer-copy">© 2026 Eldar Djedovic</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
