@@ -76,3 +76,36 @@ document.querySelectorAll('a[href]').forEach(link => {
     });
   }
 });
+
+/* ── THEME TOGGLE ── */
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+}
+
+/* ── PROJECT FILTER ── */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projCards = document.querySelectorAll('.proj-card');
+
+if (filterBtns.length) {
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      projCards.forEach(card => {
+        const match = filter === 'all' || card.dataset.stack.toLowerCase().includes(filter.toLowerCase());
+        card.classList.toggle('hidden', !match);
+      });
+    });
+  });
+}

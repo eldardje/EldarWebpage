@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 </head>
 <body>
 
@@ -20,7 +21,11 @@
       <li><a href="projects.html" class="nav-link">Projects</a></li>
       <li><a href="stack.html" class="nav-link">Stack</a></li>
     </ul>
-    <a href="mailto:djedoviceldar1@gmail.com" class="nav-cta">Get in touch</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-13a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V5a1 1 0 0 1 1-1Zm0 14a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1ZM4.22 4.22a1 1 0 0 1 1.42 0l.7.7a1 1 0 1 1-1.42 1.42l-.7-.7a1 1 0 0 1 0-1.42Zm13.44 13.44a1 1 0 0 1 1.42 0l.7.7a1 1 0 1 1-1.42 1.42l-.7-.7a1 1 0 0 1 0-1.42ZM3 11h1a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2Zm17 0h1a1 1 0 0 1 0 2h-1a1 1 0 0 1 0-2ZM4.93 18.36a1 1 0 0 1 0-1.42l.7-.7a1 1 0 0 1 1.42 1.42l-.7.7a1 1 0 0 1-1.42 0ZM17.66 5.64a1 1 0 0 1 0-1.42l.7-.7a1 1 0 0 1 1.42 1.42l-.7.7a1 1 0 0 1-1.42 0Z"/></svg>
+    </button>
+    <a href="contact.html" class="nav-cta">Get in touch</a>
     <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
@@ -30,7 +35,7 @@
       <li><a href="experience.html" class="mob-link">Experience</a></li>
       <li><a href="projects.html" class="mob-link">Projects</a></li>
       <li><a href="stack.html" class="mob-link">Stack</a></li>
-      <li><a href="mailto:djedoviceldar1@gmail.com" class="mob-link">Contact</a></li>
+      <li><a href="contact.html" class="mob-link">Contact</a></li>
     </ul>
   </div>
 

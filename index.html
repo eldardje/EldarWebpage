@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 </head>
 <body>
 
@@ -21,7 +22,11 @@
       <li><a href="pages/projects.html" class="nav-link">Projects</a></li>
       <li><a href="pages/stack.html" class="nav-link">Stack</a></li>
     </ul>
-    <a href="mailto:djedoviceldar1@gmail.com" class="nav-cta">Get in touch</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-13a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V5a1 1 0 0 1 1-1Zm0 14a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1ZM4.22 4.22a1 1 0 0 1 1.42 0l.7.7a1 1 0 1 1-1.42 1.42l-.7-.7a1 1 0 0 1 0-1.42Zm13.44 13.44a1 1 0 0 1 1.42 0l.7.7a1 1 0 1 1-1.42 1.42l-.7-.7a1 1 0 0 1 0-1.42ZM3 11h1a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2Zm17 0h1a1 1 0 0 1 0 2h-1a1 1 0 0 1 0-2ZM4.93 18.36a1 1 0 0 1 0-1.42l.7-.7a1 1 0 0 1 1.42 1.42l-.7.7a1 1 0 0 1-1.42 0ZM17.66 5.64a1 1 0 0 1 0-1.42l.7-.7a1 1 0 0 1 1.42 1.42l-.7.7a1 1 0 0 1-1.42 0Z"/></svg>
+    </button>
+    <a href="pages/contact.html" class="nav-cta">Get in touch</a>
     <button class="nav-burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -35,7 +40,7 @@
       <li><a href="pages/experience.html" class="mob-link">Experience</a></li>
       <li><a href="pages/projects.html" class="mob-link">Projects</a></li>
       <li><a href="pages/stack.html" class="mob-link">Stack</a></li>
-      <li><a href="mailto:djedoviceldar1@gmail.com" class="mob-link">Contact</a></li>
+      <li><a href="pages/contact.html" class="mob-link">Contact</a></li>
     </ul>
   </div>
 
@@ -75,6 +80,10 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11Zm2 .2v.3l7 4.9 7-4.9v-.3a.5.5 0 0 0-.5-.5h-13a.5.5 0 0 0-.5.5Zm14 2.74-6.43 4.5a1 1 0 0 1-1.14 0L5 9.44v8.06c0 .28.22.5.5.5h13a.5.5 0 0 0 .5-.5V9.44Z"/></svg>
           <span>Email</span>
         </a>
+        <a href="resume.pdf" download class="icon-link" aria-label="Download Resume">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a1 1 0 0 1 1 1v10.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 1 1 1.414-1.414L11 13.586V3a1 1 0 0 1 1-1ZM3 17a1 1 0 0 1 1 1v2h16v-2a1 1 0 1 1 2 0v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a1 1 0 0 1 1-1Z"/></svg>
+          <span>Resume</span>
+        </a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -88,13 +97,13 @@
     <div class="container">
       <div class="profile-grid">
         <div class="profile-image-wrap reveal">
-          <img src="images/Eldar.jpeg" alt="Portrait of Eldar Djedovic" class="profile-image" />
+          <img src="images/Eldar.jpeg" alt="Portrait of Eldar Djedovic" class="profile-image" loading="lazy" />
         </div>
         <div class="profile-content">
           <span class="section-tag reveal">Personal</span>
           <h2 class="section-title reveal">The person behind the code</h2>
           <p class="reveal">I love building software that has a clear impact, whether that's improving internal workflows or creating products people enjoy using every day. I care deeply about reliable systems, pragmatic architecture, and clean developer experience.</p>
-          <p class="reveal">Outside of work, this section is perfect for a short personal story, interests, certifications, or anything that makes your portfolio feel human.</p>
+          <p class="reveal">Outside of work, I stay curious — experimenting with new cloud services, building side projects, and keeping up with the DevOps and platform engineering landscape. I believe the best engineers are lifelong learners who are comfortable being uncomfortable.</p>
           <div class="profile-points">
             <div class="profile-point reveal">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7l9 5 9-5-9-5Zm-7 7.9V16l7 4 7-4V9.9l-7 3.9-7-3.9Z"/></svg>
