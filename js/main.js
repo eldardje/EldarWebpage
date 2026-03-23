@@ -111,6 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Restore opacity when Safari serves the page from bfcache (back/forward navigation)
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) {
+    document.body.style.transition = '';
+    document.body.style.opacity = '1';
+  }
+});
+
 document.querySelectorAll('a[href]').forEach(link => {
   const href = link.getAttribute('href');
   if (
