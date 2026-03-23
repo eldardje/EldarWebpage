@@ -127,7 +127,7 @@ document.querySelectorAll('a[href]').forEach(link => {
     !href.startsWith('mailto') &&
     !href.startsWith('tel:') &&
     !href.startsWith('#') &&
-    href.endsWith('.html')
+    (href.startsWith('/') || href.endsWith('.html'))
   ) {
     link.addEventListener('click', e => {
       if (e.defaultPrevented) return;
