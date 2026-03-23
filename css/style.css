@@ -35,8 +35,28 @@ body {
 /* ── UTILITIES ── */
 .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
 .section { padding: 5rem 0; }
+.section-no-top { padding-top: 0 !important; }
 .italic { font-style: italic; font-weight: 300; color: var(--ink-2); }
 strong { font-weight: 500; color: var(--ink); }
+
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 0;
+  z-index: 120;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0 0 6px 0;
+  background: var(--accent-blue);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 0.2s var(--ease);
+}
+
+.skip-link:focus {
+  top: 0;
+}
 
 /* ── NAV ── */
 nav {
@@ -72,6 +92,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   transition: opacity 0.2s;
 }
 .nav-cta:hover { opacity: 0.85; }
+.nav-cta.active { background: var(--accent-blue); color: #fff; }
 
 .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: all 0.3s; }
@@ -375,6 +396,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 .about-text p { font-size: 1rem; color: var(--ink-2); line-height: 1.8; }
 .about-text p strong { color: var(--ink); }
 .about-links { display: flex; gap: 1rem; margin-top: 0.75rem; flex-wrap: wrap; }
+.aside-link { color: var(--accent-blue); text-decoration: none; }
 
 .aside-card {
   padding: 1.25rem 1.5rem; border: 1px solid var(--border);
@@ -592,6 +614,9 @@ nav.scrolled { border-bottom-color: var(--border); }
   transition: all 0.2s; white-space: nowrap; margin-top: 4px;
 }
 .proj-request:hover { border-color: var(--accent-blue); color: var(--accent-blue); background: var(--accent-dim); }
+.proj-request-icon { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+
+.featured-more { margin-top: 2.5rem; }
 
 /* ── CONTACT PAGE ── */
 .contact-grid { display: grid; grid-template-columns: 1fr 300px; gap: 5rem; align-items: start; }
@@ -621,4 +646,20 @@ nav.scrolled { border-bottom-color: var(--border); }
 
 @media (max-width: 768px) {
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero::before,
+  .hero-scroll,
+  .scroll-line,
+  .marquee-track {
+    animation: none !important;
+  }
 }

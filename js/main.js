@@ -1,31 +1,76 @@
 /* ── NAV SCROLL ── */
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (nav) {
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+}
 
 /* ── MOBILE MENU ── */
 const burger = document.querySelector('.nav-burger');
 const mobileMenu = document.getElementById('mobileMenu');
 
 if (burger && mobileMenu) {
-  burger.addEventListener('click', () => {
-    const open = mobileMenu.classList.toggle('open');
-    burger.querySelectorAll('span').forEach((s, i) => {
+  const burgerLines = burger.querySelectorAll('span');
+
+  burger.setAttribute('aria-expanded', 'false');
+  if (!burger.getAttribute('aria-controls')) {
+    burger.setAttribute('aria-controls', 'mobileMenu');
+  }
+  mobileMenu.setAttribute('aria-hidden', 'true');
+
+  const setBurgerState = (open) => {
+    burgerLines.forEach((s, i) => {
       if (open) {
         if (i === 0) s.style.transform = 'translateY(6.5px) rotate(45deg)';
         if (i === 1) s.style.opacity = '0';
         if (i === 2) s.style.transform = 'translateY(-6.5px) rotate(-45deg)';
       } else {
-        s.style.transform = ''; s.style.opacity = '';
+        s.style.transform = '';
+        s.style.opacity = '';
       }
     });
+  };
+
+  const closeMenu = (returnFocus = false) => {
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    burger.setAttribute('aria-expanded', 'false');
+    setBurgerState(false);
+    document.removeEventListener('keydown', onEscapeClose);
+    if (returnFocus) {
+      burger.focus();
+    }
+  };
+
+  const openMenu = () => {
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    burger.setAttribute('aria-expanded', 'true');
+    setBurgerState(true);
+    document.addEventListener('keydown', onEscapeClose);
+  };
+
+  function onEscapeClose(event) {
+    if (event.key === 'Escape') {
+      closeMenu(true);
+    }
+  }
+
+  burger.addEventListener('click', () => {
+    const open = !mobileMenu.classList.contains('open');
+    if (open) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
   });
 
   mobileMenu.querySelectorAll('.mob-link').forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      burger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      closeMenu();
     });
   });
 }
@@ -33,25 +78,30 @@ if (burger && mobileMenu) {
 /* ── SCROLL REVEAL ── */
 const revealEls = document.querySelectorAll('.reveal, .reveal-line');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const siblings = [...el.parentElement.children].filter(c =>
-        c.classList.contains('reveal') || c.classList.contains('reveal-line')
-      );
-      const idx = siblings.indexOf(el);
-      el.style.transitionDelay = `${idx * 0.08}s`;
-      el.classList.add('revealed');
-      observer.unobserve(el);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+if (prefersReducedMotion) {
+  revealEls.forEach(el => el.classList.add('revealed'));
+} else {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const siblings = [...el.parentElement.children].filter(c =>
+          c.classList.contains('reveal') || c.classList.contains('reveal-line')
+        );
+        const idx = siblings.indexOf(el);
+        el.style.transitionDelay = `${idx * 0.08}s`;
+        el.classList.add('revealed');
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-revealEls.forEach(el => observer.observe(el));
+  revealEls.forEach(el => observer.observe(el));
+}
 
 /* ── PAGE TRANSITION ── */
 document.addEventListener('DOMContentLoaded', () => {
+  if (prefersReducedMotion) return;
   document.body.style.opacity = '0';
   document.body.style.transition = 'opacity 0.35s ease';
   requestAnimationFrame(() => {
@@ -64,12 +114,23 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('a[href]').forEach(link => {
   const href = link.getAttribute('href');
   if (
+    href &&
     !href.startsWith('http') &&
     !href.startsWith('mailto') &&
+    !href.startsWith('tel:') &&
     !href.startsWith('#') &&
     href.endsWith('.html')
   ) {
     link.addEventListener('click', e => {
+      if (e.defaultPrevented) return;
+      if (e.button !== 0) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (link.hasAttribute('download')) return;
+
+      const target = link.getAttribute('target');
+      if (target && target.toLowerCase() !== '_self') return;
+      if (prefersReducedMotion) return;
+
       e.preventDefault();
       document.body.style.opacity = '0';
       setTimeout(() => { window.location.href = href; }, 320);
